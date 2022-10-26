@@ -36,7 +36,11 @@ const NavBar = () => {
                     <NavLink to='/faq' className={({isActive})=>isActive?'mx-2 px-3 py-1 my-8 md:my-0 block bg-slate-700 font-medium text-white text-center rounded-lg': 'text-center mx-2 px-3 py-1 my-8 md:my-0 block'}>FAQ</NavLink>
                     <NavLink to='/blog' className={({isActive})=>isActive?'mx-2 px-3 py-1 block bg-slate-700 font-medium text-white text-center rounded-lg': 'text-center mx-2 px-3 py-1 block'}>Blog</NavLink>
                     {
-                        (user?.email || user?.displayName)?<><button onClick={handleLogOut} className='px-2 py-1 rounded-lg bg-slate-200 font-medium flex items-center'>Logout<FaAngleRight/></button></>:<>
+                        (user?.email || user?.displayName)?<>
+                        <img src={user.photoURL} alt="" className='w-8 mr-5 rounded-full' title={user.displayName}/>
+                        <button onClick={handleLogOut} className='px-2 py-1 rounded-lg bg-slate-200 font-medium flex items-center'>Logout<FaAngleRight/></button>
+                        </>:
+                        <>
                         <NavLink to='/login' className={({isActive})=>isActive?'mx-2 px-3 py-1 block bg-slate-700 font-medium text-white text-center rounded-lg': 'text-center mx-2 px-3 py-1 block'}>Login</NavLink>
                         <NavLink to='/register' className={({isActive})=>isActive?'mx-2 px-3 py-1 block bg-slate-700 font-medium text-white text-center rounded-lg': 'text-center mx-2 px-3 py-1 block'}>Register</NavLink>
                         </>
