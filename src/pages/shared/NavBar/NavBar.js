@@ -24,6 +24,8 @@ const NavBar = () => {
                     <NavLink to='/courses' className={({isActive})=>isActive?'mx-2 px-3 py-1 my-8 md:my-0 block bg-slate-700 font-medium text-white text-center rounded-lg': 'text-center mx-2 px-3 py-1 my-8 md:my-0 block'}>Courses</NavLink>
                     <NavLink to='/faq' className={({isActive})=>isActive?'mx-2 px-3 py-1 my-8 md:my-0 block bg-slate-700 font-medium text-white text-center rounded-lg': 'text-center mx-2 px-3 py-1 my-8 md:my-0 block'}>FAQ</NavLink>
                     <NavLink to='/blog' className={({isActive})=>isActive?'mx-2 px-3 py-1 block bg-slate-700 font-medium text-white text-center rounded-lg': 'text-center mx-2 px-3 py-1 block'}>Blog</NavLink>
+                    <NavLink to='/login' className={({isActive})=>isActive?'mx-2 px-3 py-1 block bg-slate-700 font-medium text-white text-center rounded-lg': 'text-center mx-2 px-3 py-1 block'}>Login</NavLink>
+                    <NavLink to='/register' className={({isActive})=>isActive?'mx-2 px-3 py-1 block bg-slate-700 font-medium text-white text-center rounded-lg': 'text-center mx-2 px-3 py-1 block'}>Register</NavLink>
                 </div>
             </div>
         </nav>
