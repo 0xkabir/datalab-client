@@ -3,9 +3,10 @@ import register from './regsiter.png'
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Register = () => {
-    const {createUserAccount, updateUserProfile} = useContext(AuthContext)
+    const {createUserAccount, updateUserProfile, loginWithProvider} = useContext(AuthContext)
     const handleRegister = event => {
         event.preventDefault();
         const form = event.target;
@@ -24,6 +25,17 @@ const Register = () => {
         })
         .catch(error => console.error(error))
     }
+
+    const handleGoogleLogin = () => {
+        const googleProvider = new GoogleAuthProvider()
+        loginWithProvider(googleProvider)
+        .then(result => {
+            const user = result.user
+            console.log(user)
+        })
+        .catch(error => console.error(error))
+    }
+
     return (
         <div>
             <h2 className='text-2xl font-medium text-center mt-10'>Create a New Account</h2>
@@ -44,7 +56,7 @@ const Register = () => {
                 <p className='mt-2 w-4/5 mx-auto md:w-auto'>Already have an account? <Link to='/login' className='text-slate-700'>Login Now!</Link></p>
                 <p className='text-center w-full md:w-4/5 lg:w-2/5 my-3'>Or, Continue with</p>
                 <div className='w-full md:w-4/5 lg:w-2/5 flex justify-evenly'>
-                <button className='flex items-center px-4 py-1.5 rounded text-slate-700 border-2 border-slate-700 hover:bg-slate-800 hover:text-white hover:font-medium'><FaGoogle className='mr-2'/> Google</button>
+                <button onClick={handleGoogleLogin} className='flex items-center px-4 py-1.5 rounded text-slate-700 border-2 border-slate-700 hover:bg-slate-800 hover:text-white hover:font-medium'><FaGoogle className='mr-2'/> Google</button>
                 <button className='flex items-center px-4 py-1.5 rounded text-slate-700 border-2 border-slate-700 hover:bg-slate-800 hover:text-white hover:font-medium'><FaGithub className='mr-2'/> GitHub</button>
                 </div>
             </div>
