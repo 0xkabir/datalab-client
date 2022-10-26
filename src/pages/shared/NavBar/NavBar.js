@@ -3,9 +3,18 @@ import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from './logo.png'
 import { HiMenuAlt3, HiX } from "react-icons/hi";
+import { FaAngleRight } from "react-icons/fa";
+import { useContext } from 'react';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const NavBar = () => {
+    const {user, userLogOut} = useContext(AuthContext)
     const [open, setOpen] = useState(false)
+    const handleLogOut = () => {
+        userLogOut()
+        .then(()=>{})
+        .catch(error=>console.error(error))
+    }
     return (
         <nav className='h-16 flex sticky top-0 justify-between items-center bg-white shadow-md z-10'>
             <Link to='/'>
@@ -26,8 +35,12 @@ const NavBar = () => {
                     <NavLink to='/courses' className={({isActive})=>isActive?'mx-2 px-3 py-1 my-8 md:my-0 block bg-slate-700 font-medium text-white text-center rounded-lg': 'text-center mx-2 px-3 py-1 my-8 md:my-0 block'}>Courses</NavLink>
                     <NavLink to='/faq' className={({isActive})=>isActive?'mx-2 px-3 py-1 my-8 md:my-0 block bg-slate-700 font-medium text-white text-center rounded-lg': 'text-center mx-2 px-3 py-1 my-8 md:my-0 block'}>FAQ</NavLink>
                     <NavLink to='/blog' className={({isActive})=>isActive?'mx-2 px-3 py-1 block bg-slate-700 font-medium text-white text-center rounded-lg': 'text-center mx-2 px-3 py-1 block'}>Blog</NavLink>
-                    <NavLink to='/login' className={({isActive})=>isActive?'mx-2 px-3 py-1 block bg-slate-700 font-medium text-white text-center rounded-lg': 'text-center mx-2 px-3 py-1 block'}>Login</NavLink>
-                    <NavLink to='/register' className={({isActive})=>isActive?'mx-2 px-3 py-1 block bg-slate-700 font-medium text-white text-center rounded-lg': 'text-center mx-2 px-3 py-1 block'}>Register</NavLink>
+                    {
+                        (user?.email || user?.displayName)?<><button onClick={handleLogOut} className='px-2 py-1 rounded-lg bg-slate-200 font-medium flex items-center'>Logout<FaAngleRight/></button></>:<>
+                        <NavLink to='/login' className={({isActive})=>isActive?'mx-2 px-3 py-1 block bg-slate-700 font-medium text-white text-center rounded-lg': 'text-center mx-2 px-3 py-1 block'}>Login</NavLink>
+                        <NavLink to='/register' className={({isActive})=>isActive?'mx-2 px-3 py-1 block bg-slate-700 font-medium text-white text-center rounded-lg': 'text-center mx-2 px-3 py-1 block'}>Register</NavLink>
+                        </>
+                    }
                 </div>
             </div>
         </nav>
