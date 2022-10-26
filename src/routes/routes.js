@@ -12,8 +12,8 @@ export const routes = createBrowserRouter([
     {path: '/', element: <Main></Main>, children: [
         {path: '/home', element: <Home></Home>},
         {path: '/', element: <Home></Home>},
-        {path: '/courses', element: <Courses></Courses>, loader: ()=>fetch('http://localhost:5000/courses/')},
-        {path: '/courses/:id', element: <CourseDetails></CourseDetails>, loader: ({params})=>fetch(`http://localhost:5000/courses/${params.id}/`)},
+        {path: '/courses', element: <Courses></Courses>, loader: ()=>fetch('https://datalab-server.vercel.app/courses/')},
+        {path: '/courses/:id', element: <CourseDetails></CourseDetails>, loader: ({params})=>fetch(`https://datalab-server.vercel.app/courses/${params.id}/`)},
         {path: '/faq', element: <FAQ></FAQ>},
         {path: '/blog', element: <Blog></Blog>},
         {path: '/login', element: <Login></Login>},
