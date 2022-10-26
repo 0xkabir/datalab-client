@@ -4,9 +4,10 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import toast from 'react-hot-toast';
 
 const Register = () => {
-    const {createUserAccount, updateUserProfile, loginWithProvider} = useContext(AuthContext)
+    const {setLoading, createUserAccount, updateUserProfile, loginWithProvider, verifyEmailAddress} = useContext(AuthContext)
     const handleRegister = event => {
         event.preventDefault();
         const form = event.target;
@@ -16,14 +17,16 @@ const Register = () => {
         const password = form.password.value;
         createUserAccount(email, password)
         .then(result => {
-            form.reset()
-            const user = result.user
-            console.log(user)
+            verifyEmailAddress()
+            .then(()=>{
+                toast.success('Verification link sent to your email address.')
+            })
             updateUserProfile(name, photoURL)
-            .then(()=>console.log('profile updated'))
+            .then(()=>{})
             .catch(error => console.error(error))
         })
         .catch(error => console.error(error))
+        form.reset()
     }
 
     const handleGoogleLogin = () => {
@@ -34,6 +37,7 @@ const Register = () => {
             console.log(user)
         })
         .catch(error => console.error(error))
+        .finally(setLoading(false))
     }
 
     const handleGithubLogin = () => {
@@ -44,6 +48,7 @@ const Register = () => {
             console.log(user)
         })
         .catch(error =>console.error(error))
+        .finally(setLoading(false))
     }
 
     return (

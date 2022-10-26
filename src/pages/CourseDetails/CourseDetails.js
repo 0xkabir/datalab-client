@@ -1,11 +1,12 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 
 const CourseDetails = () => {
     const details = useLoaderData()
-    const {imgurl, name, description, introduction, author, rating, reviews, price} = details
+    const {_id, imgurl, name, description, introduction, author, rating, reviews, price} = details
     const {intro, features, conclusion} = description
+    
     return (
         <div>
             <div className='grid md:grid-cols-2 items-center md:px-8 md:py-5 my-5 w-full lg:w-4/5 mx-auto bg-slate-900 text-white'>
@@ -42,7 +43,10 @@ const CourseDetails = () => {
                     }
                 </ul>
                 <p className='mt-3 mb-5'>{conclusion}</p>
-            </div>
+                <Link to={`/checkout/${_id}`}>
+                    <button className='px-3 py-1.5 mb-10 bg-slate-800 hover:bg-slate-900 rounded font-medium text-white'>Get Premium Access</button>
+                </Link>
+            </div>            
         </div>
     );
 };

@@ -1,13 +1,17 @@
 import React from 'react';
 import login from './login.jpg'
 import { FaGoogle, FaGithub } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import toast from 'react-hot-toast';
 
 const Login = () => {
-    const {userLogin, loginWithProvider} = useContext(AuthContext)
+    const {setLoading, userLogin, loginWithProvider} = useContext(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
     const handleLogin = event => {
         event.preventDefault()
         const form = event.target;
@@ -16,30 +20,36 @@ const Login = () => {
         userLogin(email, password)
         .then(result => {
             form.reset()
-            const user = result.user
-            console.log('login successful with', user)
+            const user = result.user;
+            if(user.emailVerified){
+                navigate(from, { replace: true });
+            }
+            else{
+                toast.error('Your email is not verified')
+            }
         })
-        .catch(error => console.error(error))
+        .catch(error => console.error(error.message))
+        .finally(setLoading(false))
     }
 
     const handleGoogleLogin = () => {
         const googleProvider = new GoogleAuthProvider()
         loginWithProvider(googleProvider)
         .then(result => {
-            const user = result.user
-            console.log(user)
+            navigate(from, { replace: true });
         })
         .catch(error => console.error(error))
+        .finally(setLoading(false))
     }
 
     const handleGithubLogin = () => {
         const githubProvider = new GithubAuthProvider()
         loginWithProvider(githubProvider)
         .then(result => {
-            const user = result.user;
-            console.log(user)
+            navigate(from, { replace: true });
         })
         .catch(error =>console.error(error))
+        .finally(setLoading(false))
     }
 
     return (
