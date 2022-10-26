@@ -1,16 +1,36 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import register from './regsiter.png'
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
+    const {createUserAccount, updateUserProfile} = useContext(AuthContext)
+    const handleRegister = event => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const photoURL = form.photourl.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        createUserAccount(email, password)
+        .then(result => {
+            form.reset()
+            const user = result.user
+            console.log(user)
+            updateUserProfile(name, photoURL)
+            .then(()=>console.log('profile updated'))
+            .catch(error => console.error(error))
+        })
+        .catch(error => console.error(error))
+    }
     return (
         <div>
             <h2 className='text-2xl font-medium text-center mt-10'>Create a New Account</h2>
             <div className='grid md:grid-cols-2 items-center'>
             <img src={register} alt="" className='lg:w-4/5 mx-auto'/>
             <div>
-                <form className='mx-auto w-4/5 md:w-auto md:mt-2 lg:mt-0'>
+                <form onSubmit={handleRegister} className='mx-auto w-4/5 md:w-auto md:mt-2 lg:mt-0'>
                     <label htmlFor="name" className='block'>Full Name</label>
                     <input type="text" name="name" className='bg-gray-200 px-2 py-1.5 my-1.5 rounded w-full md:w-4/5 lg:w-2/5'/>
                     <label htmlFor="photourl" className='block'>PhotoURL</label>

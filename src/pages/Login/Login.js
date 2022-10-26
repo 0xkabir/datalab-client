@@ -2,15 +2,31 @@ import React from 'react';
 import login from './login.jpg'
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
+    const {userLogin} = useContext(AuthContext)
+    const handleLogin = event => {
+        event.preventDefault()
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        userLogin(email, password)
+        .then(result => {
+            form.reset()
+            const user = result.user
+            console.log('login successful with', user)
+        })
+        .catch(error => console.error(error))
+    }
     return (
         <div>
             <h2 className='text-2xl font-medium text-center mt-10'>Login to Your Account</h2>
             <div className='grid md:grid-cols-2 items-center'>
             <img src={login} alt="" className='lg:w-4/5 mx-auto'/>
             <div>
-                <form className='mx-auto w-4/5 md:w-auto'>
+                <form onSubmit={handleLogin} className='mx-auto w-4/5 md:w-auto'>
                     <label htmlFor="email" className='block'>Email</label>
                     <input type="email" name="email" className='bg-gray-200 px-2 py-1.5 my-1.5 rounded w-full md:w-4/5 lg:w-2/5'/>
                     <label htmlFor="password" className='block'>Password</label>
