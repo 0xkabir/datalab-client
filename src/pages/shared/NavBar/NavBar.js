@@ -9,7 +9,7 @@ const NavBar = () => {
         <nav className='h-16 flex sticky top-0 justify-between items-center bg-white shadow-md z-10'>
             <Link to='/'>
                 <div className='flex items-center px-5'>
-                    <h2 className='text-xl font-medium'><span className='text-orange-700'>Quiz</span>Net</h2>
+                    <h2 className='text-xl font-medium'><span className='text-orange-700'>Data</span>Lab</h2>
                 </div>
             </Link>
 
