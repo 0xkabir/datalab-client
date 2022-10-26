@@ -17,7 +17,7 @@ const Login = () => {
                     <input type="password" name="password" className='bg-gray-200 px-2 py-1.5 rounded my-1.5 w-full md:w-4/5 lg:w-2/5'/>
                     <button type='submit' className='px-5 py-1.5 rounded bg-slate-700 hover:bg-slate-900 text-white font-medium block mt-3'>Login!</button>
                 </form>
-                <p className='mt-2'>New to DataLab? <Link to='/register' className='text-slate-700'>Register Now!</Link></p>
+                <p className='mt-2 w-4/5 mx-auto md:w-auto'>New to DataLab? <Link to='/register' className='text-slate-700'>Register Now!</Link></p>
                 <p className='text-center w-full md:w-4/5 lg:w-2/5 my-3'>Or, Continue with</p>
                 <div className='w-full md:w-4/5 lg:w-2/5 flex justify-evenly'>
                 <button className='flex items-center px-4 py-1.5 rounded text-slate-700 border-2 border-slate-700 hover:bg-slate-800 hover:text-white hover:font-medium'><FaGoogle className='mr-2'/> Google</button>
