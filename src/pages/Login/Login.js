@@ -4,7 +4,7 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
     const {userLogin, loginWithProvider} = useContext(AuthContext)
@@ -32,6 +32,16 @@ const Login = () => {
         .catch(error => console.error(error))
     }
 
+    const handleGithubLogin = () => {
+        const githubProvider = new GithubAuthProvider()
+        loginWithProvider(githubProvider)
+        .then(result => {
+            const user = result.user;
+            console.log(user)
+        })
+        .catch(error =>console.error(error))
+    }
+
     return (
         <div>
             <h2 className='text-2xl font-medium text-center mt-10'>Login to Your Account</h2>
@@ -49,7 +59,7 @@ const Login = () => {
                 <p className='text-center w-full md:w-4/5 lg:w-2/5 my-3'>Or, Continue with</p>
                 <div className='w-full md:w-4/5 lg:w-2/5 flex justify-evenly'>
                 <button onClick={handleGoogleLogin} className='flex items-center px-4 py-1.5 rounded text-slate-700 border-2 border-slate-700 hover:bg-slate-800 hover:text-white hover:font-medium'><FaGoogle className='mr-2'/> Google</button>
-                <button className='flex items-center px-4 py-1.5 rounded text-slate-700 border-2 border-slate-700 hover:bg-slate-800 hover:text-white hover:font-medium'><FaGithub className='mr-2'/> GitHub</button>
+                <button onClick={handleGithubLogin} className='flex items-center px-4 py-1.5 rounded text-slate-700 border-2 border-slate-700 hover:bg-slate-800 hover:text-white hover:font-medium'><FaGithub className='mr-2'/> GitHub</button>
                 </div>
             </div>
             </div>
