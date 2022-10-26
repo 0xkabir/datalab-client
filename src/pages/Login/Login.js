@@ -28,7 +28,10 @@ const Login = () => {
                 toast.error('Your email is not verified')
             }
         })
-        .catch(error => console.error(error.message))
+        .catch(error => {
+            const message = error.message.slice(22, -2)
+            toast.error(message)
+        })
         .finally(setLoading(false))
     }
 
