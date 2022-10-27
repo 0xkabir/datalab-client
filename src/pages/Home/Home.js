@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Home = () => {
     return (
         <div>
-            <div className='flex flex-col md:flex-row items-center w-11/12 mx-auto'>
+            <div className='flex flex-col md:flex-row items-center w-11/12 mx-auto mt-8'>
                 <div className='order-2 md:order-1'>
                     <h1 className='text-4xl font-medium text-slate-800'>Become a Data Expert Today!!</h1>
                     <p className='text-slate-800 my-5'>So, You want to start your career as a data expert having no clue how to start off? No Worries!! DataLab has got your back. Satrt learning all the essential skiis and step into your dream career.</p>

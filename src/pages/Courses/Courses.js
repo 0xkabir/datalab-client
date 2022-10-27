@@ -7,7 +7,7 @@ const Courses = () => {
     console.log(courses)
     return (
         <div>
-             <h2 className='text-3xl font-medium text-center'>This will be the Courses Page</h2>
+             <h2 className='my-8 text-3xl text-slate-800 font-medium text-center'>Explore Our Popular Courses</h2>
              <div className='grid grid-cols-12'>
                 <div className='col-span-12 lg:col-span-4'>
                     {
