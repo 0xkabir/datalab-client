@@ -1,13 +1,15 @@
 import React, { useContext } from 'react';
 import register from './regsiter.png'
 import { FaGoogle, FaGithub } from "react-icons/fa";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import toast from 'react-hot-toast';
 
 const Register = () => {
-    const {setLoading, createUserAccount, updateUserProfile, loginWithProvider, verifyEmailAddress} = useContext(AuthContext)
+    const {setLoading, createUserAccount, updateUserProfile, loginWithProvider} = useContext(AuthContext)
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
     const navigate = useNavigate()
     const handleRegister = event => {
         event.preventDefault();
@@ -18,14 +20,10 @@ const Register = () => {
         const password = form.password.value;
         createUserAccount(email, password)
         .then(result => {
-            verifyEmailAddress()
-            .then(()=>{
-                form.reset()
-                toast.success('Verification link sent to your email address.')
-                navigate('/login')
-            })
             updateUserProfile(name, photoURL)
-            .then(()=>{})
+            .then(()=>{
+                navigate(from, { replace: true });
+            })
             .catch(error => toast.error(error.message.slice(22, -2)))
         })
         .catch(error => toast.error(error.message.slice(22, -2)))

@@ -21,7 +21,7 @@ const Login = () => {
         .then(result => {
             form.reset()
             const user = result.user;
-            if(user.emailVerified){
+            if(user.uid){
                 setUser(user)
                 navigate(from, { replace: true });
             }
