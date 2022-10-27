@@ -8,7 +8,7 @@ import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import toast from 'react-hot-toast';
 
 const Login = () => {
-    const {setLoading, userLogin, loginWithProvider} = useContext(AuthContext)
+    const {setUser, setLoading, userLogin, loginWithProvider} = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
@@ -22,6 +22,7 @@ const Login = () => {
             form.reset()
             const user = result.user;
             if(user.emailVerified){
+                setUser(user)
                 navigate(from, { replace: true });
             }
             else{
