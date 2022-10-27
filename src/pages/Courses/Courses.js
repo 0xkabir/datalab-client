@@ -12,7 +12,7 @@ const Courses = () => {
                 <div className='col-span-12 lg:col-span-4'>
                     {
                         courses.map(course => <Link to={`/courses/${course._id}`} key={course._id}>
-                            <p className='cursor-pointer font-medium m-5 md:mx-12 lg:mx-5 px-5 py-3 rounded-lg shadow-xl'>{course.name}</p>
+                            <p className='cursor-pointer font-medium m-5 md:mx-12 lg:mx-5 px-5 py-3 rounded-lg shadow-md'>{course.name}</p>
                         </Link>)
                     }
                 </div>
