@@ -1,0 +1,80 @@
+[debug] [2022-10-27T15:26:46.251Z] ----------------------------------------------------------------------
+[debug] [2022-10-27T15:26:46.252Z] Command:       /usr/bin/node /usr/bin/firebase deploy
+[debug] [2022-10-27T15:26:46.253Z] CLI Version:   11.15.0
+[debug] [2022-10-27T15:26:46.253Z] Platform:      linux
+[debug] [2022-10-27T15:26:46.253Z] Node Version:  v16.18.0
+[debug] [2022-10-27T15:26:46.254Z] Time:          Thu Oct 27 2022 21:26:46 GMT+0600 (Bangladesh Standard Time)
+[debug] [2022-10-27T15:26:46.254Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-10-27T15:26:46.315Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-10-27T15:26:46.315Z] > authorizing via signed-in user (kabir.sadiken1@gmail.com)
+[debug] [2022-10-27T15:26:46.315Z] [iam] checking project datalab-0xkabir for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-10-27T15:26:46.317Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/datalab-0xkabir:testIamPermissions [none]
+[debug] [2022-10-27T15:26:46.318Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/datalab-0xkabir:testIamPermissions x-goog-quota-user=projects/datalab-0xkabir
+[debug] [2022-10-27T15:26:46.318Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/datalab-0xkabir:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-10-27T15:26:47.880Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/datalab-0xkabir:testIamPermissions 200
+[debug] [2022-10-27T15:26:47.881Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/datalab-0xkabir:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-10-27T15:26:47.882Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/datalab-0xkabir [none]
+[debug] [2022-10-27T15:26:49.024Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/datalab-0xkabir 200
+[debug] [2022-10-27T15:26:49.024Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/datalab-0xkabir {"projectId":"datalab-0xkabir","projectNumber":"290224120710","displayName":"datalab-0xkabir","name":"projects/datalab-0xkabir","resources":{"hostingSite":"datalab-0xkabir"},"state":"ACTIVE","etag":"1_199ac82f-13e8-46e9-b78f-bae96d58eaed"}
+[info] 
+[info] === Deploying to 'datalab-0xkabir'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2022-10-27T15:26:49.028Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/datalab-0xkabir/versions [none]
+[debug] [2022-10-27T15:26:49.028Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/datalab-0xkabir/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2022-10-27T15:26:50.714Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/datalab-0xkabir/versions 200
+[debug] [2022-10-27T15:26:50.714Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/datalab-0xkabir/versions {"name":"projects/290224120710/sites/datalab-0xkabir/versions/607e4fd4ed4a9246","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[datalab-0xkabir]: beginning deploy... 
+[info] i  hosting[datalab-0xkabir]: found 25 files in build 
+[debug] [2022-10-27T15:26:50.723Z] [hosting] uploading with 200 concurrency
+[debug] [2022-10-27T15:26:51.260Z] [hosting] hash cache [YnVpbGQ] stored for 25 files
+[debug] [2022-10-27T15:26:51.260Z] [hosting][hash queue][FINAL] {"max":530,"min":14,"avg":45.96,"active":0,"complete":25,"success":25,"errored":0,"retried":0,"total":25,"elapsed":535}
+[debug] [2022-10-27T15:26:51.261Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/290224120710/sites/datalab-0xkabir/versions/607e4fd4ed4a9246:populateFiles [none]
+[debug] [2022-10-27T15:26:51.261Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/290224120710/sites/datalab-0xkabir/versions/607e4fd4ed4a9246:populateFiles {"files":{"/asset-manifest.json":"50d17a08be59d8daa54d32f1fbbb539f6e33665231d920a8467aed1f131a0fea","/index.html":"efc6f31962f985e655f305de24208a53d1b5ce4fb7ecfa3523ec1f2c9a1c6f7b","/manifest.json":"0958a5e0c831126100c8c2d06a6bbaa665a3900f21aaff4130238a6f5a113aa1","/robots.txt":"2544ca049f223a42bff01f72ad930a5edba75bbb7199d0f8430a02ff5aca16ec","/logo192.png":"76c449ccb9cd117c2f2338f091b18f7050f3210e249b2228f5c81b23f34377cd","/logo512.png":"7779210d56c1f3741e2e487799fe3092def4fa6ac450a60532b807c3a8971205","/static/js/787.8545fed4.chunk.js":"f13fd42ddb2a5697568cadaff1da9c5c65c75e93fc5c504b993cb94f56f1dc17","/static/js/787.8545fed4.chunk.js.map":"f7b911d258d55fe0fcee0c475c391497fdf3ef336ce2b710ec23c5def685d785","/favicon.png":"24267b02c13907ef0e84a6f97e18806f76404a494b7a677b5e46179153172dd1","/static/js/main.87bcc3cf.js.LICENSE.txt":"e1f32788b4f039233498f27aec123fc3d31ac8dceeccc393cc9e47a5ee58b7f0","/static/css/main.fabcc9fe.css.map":"5ab2731f5141e47fae39eb6d6879d8c2ef0710f69a865959f554f93afc53a333","/static/media/logo.ea73d4b169fe3fd84ecd.png":"24267b02c13907ef0e84a6f97e18806f76404a494b7a677b5e46179153172dd1","/static/media/excel.8aa91070dbd869f779de.png":"d3d3a444c59f0bdf2a5dbd53ea9dcddaf71d726039a7ed708fdad419136217d9","/static/css/main.fabcc9fe.css":"ccc19173b0c01b43649004e28e8242c156951347d7998ef55df34f51e91fd490","/static/media/powerBI.ba77e7fac904d2ec2b0d.png":"d41eaafbfc2094ca0b2a90b48966795021c8e806a69b33793fe2e0e59504d0ab","/static/media/python.4a9f0750b699cc2c60ad.png":"0a9dedbe5be5082a1dbd207469b7297a4e766e54ab1c66dcf706f902c0b35b4e","/static/media/mysql.750d9dd5714669b977a7.png":"83116a05bbbc9bc40d1c38dcee0a8bd0015892bc5f086cc81c3ea08084716b11","/static/media/statistics.d000ea418282ca496626.png":"f32fd73a3123ef4f9a1ed8f4372389735bf454c6b844dc87dde55aaac9f43bdd","/static/media/home-banner.6af166912f98c84e7f64.png":"7281bb6a5348744e4d20f5924fb96d7bd65831cc66afb5fa7c9d751a04ca091c","/static/media/matplotlib.c4574eb1ccecf3b8164e.png":"f7317fc3466312847b43a12f9c79f6a659f2de9169a90b6ef5c1384bb82ed61d","/static/media/regsiter.aa51c054dfe42339f47c.png":"551aa42d960278ecaef356015268a21983cdb37eaa5485e6266dfa6f92bd406b","/static/media/error.324108cfd45dec9213c1.png":"01e215fe0bb9df0b673994e1a8d5414df418c6feafabfa80a18092fae3eedf8c","/static/js/main.87bcc3cf.js":"ae93bac948225d064c791333c06b8ebd6cbcfc4ad69318789b8f78e1defa6167","/static/media/login.f89a07d2f3bab9ac43ec.jpg":"f2b5b4ca8e19d886708bee0c2d550d92df899e81cb2ebe9c8dfb1605cb8be0ff","/static/js/main.87bcc3cf.js.map":"da709f7f40ef93bec877afd6684aa4af6ba14e5b61aa7dc7ef665e1693dfa6e5"}}
+[debug] [2022-10-27T15:26:52.494Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/290224120710/sites/datalab-0xkabir/versions/607e4fd4ed4a9246:populateFiles 200
+[debug] [2022-10-27T15:26:52.494Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/290224120710/sites/datalab-0xkabir/versions/607e4fd4ed4a9246:populateFiles {"uploadRequiredHashes":["da709f7f40ef93bec877afd6684aa4af6ba14e5b61aa7dc7ef665e1693dfa6e5","50d17a08be59d8daa54d32f1fbbb539f6e33665231d920a8467aed1f131a0fea","efc6f31962f985e655f305de24208a53d1b5ce4fb7ecfa3523ec1f2c9a1c6f7b","ae93bac948225d064c791333c06b8ebd6cbcfc4ad69318789b8f78e1defa6167"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/datalab-0xkabir/versions/607e4fd4ed4a9246/files"}
+[debug] [2022-10-27T15:26:52.495Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/datalab-0xkabir/versions/607e4fd4ed4a9246/files/da709f7f40ef93bec877afd6684aa4af6ba14e5b61aa7dc7ef665e1693dfa6e5 [none]
+[debug] [2022-10-27T15:26:52.495Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/datalab-0xkabir/versions/607e4fd4ed4a9246/files/da709f7f40ef93bec877afd6684aa4af6ba14e5b61aa7dc7ef665e1693dfa6e5 [stream]
+[debug] [2022-10-27T15:26:52.496Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/datalab-0xkabir/versions/607e4fd4ed4a9246/files/50d17a08be59d8daa54d32f1fbbb539f6e33665231d920a8467aed1f131a0fea [none]
+[debug] [2022-10-27T15:26:52.496Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/datalab-0xkabir/versions/607e4fd4ed4a9246/files/50d17a08be59d8daa54d32f1fbbb539f6e33665231d920a8467aed1f131a0fea [stream]
+[debug] [2022-10-27T15:26:52.497Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/datalab-0xkabir/versions/607e4fd4ed4a9246/files/efc6f31962f985e655f305de24208a53d1b5ce4fb7ecfa3523ec1f2c9a1c6f7b [none]
+[debug] [2022-10-27T15:26:52.497Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/datalab-0xkabir/versions/607e4fd4ed4a9246/files/efc6f31962f985e655f305de24208a53d1b5ce4fb7ecfa3523ec1f2c9a1c6f7b [stream]
+[debug] [2022-10-27T15:26:52.498Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/datalab-0xkabir/versions/607e4fd4ed4a9246/files/ae93bac948225d064c791333c06b8ebd6cbcfc4ad69318789b8f78e1defa6167 [none]
+[debug] [2022-10-27T15:26:52.499Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/datalab-0xkabir/versions/607e4fd4ed4a9246/files/ae93bac948225d064c791333c06b8ebd6cbcfc4ad69318789b8f78e1defa6167 [stream]
+[debug] [2022-10-27T15:26:52.500Z] [hosting][populate queue][FINAL] {"max":1236,"min":1236,"avg":1236,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":1241}
+[debug] [2022-10-27T15:26:52.500Z] [hosting] uploads queued: 4
+[debug] [2022-10-27T15:26:54.188Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/datalab-0xkabir/versions/607e4fd4ed4a9246/files/50d17a08be59d8daa54d32f1fbbb539f6e33665231d920a8467aed1f131a0fea 200
+[debug] [2022-10-27T15:26:54.188Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/datalab-0xkabir/versions/607e4fd4ed4a9246/files/50d17a08be59d8daa54d32f1fbbb539f6e33665231d920a8467aed1f131a0fea [stream]
+[debug] [2022-10-27T15:26:54.292Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/datalab-0xkabir/versions/607e4fd4ed4a9246/files/efc6f31962f985e655f305de24208a53d1b5ce4fb7ecfa3523ec1f2c9a1c6f7b 200
+[debug] [2022-10-27T15:26:54.292Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/datalab-0xkabir/versions/607e4fd4ed4a9246/files/efc6f31962f985e655f305de24208a53d1b5ce4fb7ecfa3523ec1f2c9a1c6f7b [stream]
+[debug] [2022-10-27T15:26:54.976Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/datalab-0xkabir/versions/607e4fd4ed4a9246/files/ae93bac948225d064c791333c06b8ebd6cbcfc4ad69318789b8f78e1defa6167 200
+[debug] [2022-10-27T15:26:54.976Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/datalab-0xkabir/versions/607e4fd4ed4a9246/files/ae93bac948225d064c791333c06b8ebd6cbcfc4ad69318789b8f78e1defa6167 [stream]
+[debug] [2022-10-27T15:26:55.388Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/datalab-0xkabir/versions/607e4fd4ed4a9246/files/da709f7f40ef93bec877afd6684aa4af6ba14e5b61aa7dc7ef665e1693dfa6e5 200
+[debug] [2022-10-27T15:26:55.388Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/datalab-0xkabir/versions/607e4fd4ed4a9246/files/da709f7f40ef93bec877afd6684aa4af6ba14e5b61aa7dc7ef665e1693dfa6e5 [stream]
+[debug] [2022-10-27T15:26:55.388Z] [hosting][upload queue][FINAL] {"max":2894,"min":1693,"avg":2216.25,"active":0,"complete":4,"success":4,"errored":0,"retried":0,"total":4,"elapsed":2894}
+[info] ✔  hosting[datalab-0xkabir]: file upload complete 
+[debug] [2022-10-27T15:26:55.389Z] [hosting] deploy completed after 4673ms
+[debug] [2022-10-27T15:26:55.391Z] [
+  {
+    "config": {
+      "public": "build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "datalab-0xkabir"
+    },
+    "version": "projects/290224120710/sites/datalab-0xkabir/versions/607e4fd4ed4a9246"
+  }
+]
+[info] i  hosting[datalab-0xkabir]: finalizing version... 
+[debug] [2022-10-27T15:26:55.393Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/datalab-0xkabir/versions/607e4fd4ed4a9246 updateMask=status%2Cconfig
+[debug] [2022-10-27T15:26:55.393Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/datalab-0xkabir/versions/607e4fd4ed4a9246 {"status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]}}
