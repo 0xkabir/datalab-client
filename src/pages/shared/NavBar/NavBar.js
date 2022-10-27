@@ -28,7 +28,7 @@ const NavBar = () => {
     }
 
     return (
-        <Navbar className='sticky top-0 z-20'
+        <Navbar className='sticky shadow-md top-0 z-20'
         fluid={true}
         rounded={true}
         >
@@ -41,24 +41,29 @@ const NavBar = () => {
         <div className="flex items-center md:order-2">
             <button onClick={handleThemeChange} className='text-lg mr-2'>{theme === 'light'?<HiMoon/>:<HiSun/>}</button>
         {
-                (user?.email || user?.displayName)?<>
+                (user?.email || user?.displayName|| user?.uid)?<>
                 <img src={user.photoURL} alt="" className='w-8 mr-5 rounded-full' title={user.displayName}/>
                 <button onClick={handleLogOut} className='px-2 py-1 rounded-lg text-white bg-slate-700 font-medium flex items-center'><FaSignOutAlt/></button>
                 </>:
                 <div className='hidden md:block'>
-                <NavLink to='/login' className={({isActive})=>isActive?'mx-2 px-3 py-1.5 bg-slate-700 font-medium text-white text-center rounded-lg': 'text-center mx-2 px-3 py-1.5'}>Login</NavLink>
-                <NavLink to='/register' className={({isActive})=>isActive?'mx-2 px-3 py-1.5 bg-slate-700 font-medium text-white text-center rounded-lg': 'text-center mx-2 px-3 py-1.5'}>Register</NavLink>
+                <NavLink to='/login' className={({isActive})=>isActive?'md:text-base mx-2 px-3 py-1.5 bg-slate-700 font-medium text-white text-center rounded-lg': 'md:text-base font-medium text-center mx-2 px-3 py-1.5'}>Login</NavLink>
+                <NavLink to='/register' className={({isActive})=>isActive?'md:text-base mx-2 px-3 py-1.5 bg-slate-700 font-medium text-white text-center rounded-lg': 'md:text-base font-medium text-center mx-2 px-3 py-1.5'}>Register</NavLink>
                 </div>
             }      
         <Navbar.Toggle />
         </div>
         <Navbar.Collapse>
-        <NavLink to='/home' className={({isActive})=>isActive?'w-2/5 mx-auto md:mx-2 px-3 py-1 block bg-slate-700 font-medium text-white text-center rounded-lg': 'text-center w-2/5 mx-auto md:mx-2 px-3 py-1 block '}>Home</NavLink>
-        <NavLink to='/courses' className={({isActive})=>isActive?'w-2/5 mx-auto md:mx-2 px-3 py-1 block bg-slate-700 font-medium text-white text-center rounded-lg': 'text-center w-2/5 mx-auto md:mx-2 px-3 py-1 block'}>Courses</NavLink>
-        <NavLink to='/faq' className={({isActive})=>isActive?'w-2/5 mx-auto md:mx-2 px-3 py-1 block bg-slate-700 font-medium text-white text-center rounded-lg': 'text-center w-2/5 mx-auto md:mx-2 px-3 py-1 block'}>FAQ</NavLink>
-        <NavLink to='/blog' className={({isActive})=>isActive?'w-2/5 mx-auto md:mx-2 px-3 py-1 block bg-slate-700 font-medium text-white text-center rounded-lg': 'text-center w-2/5 mx-auto md:mx-2 px-3 py-1 block'}>Blog</NavLink>
-        <NavLink to='/login' className={({isActive})=>isActive?'md:hidden w-2/5 mx-auto md:mx-2 px-3 py-1 block bg-slate-700 font-medium text-white text-center rounded-lg': 'md:hidden text-center w-2/5 mx-auto md:mx-2 px-3 py-1 block'}>Login</NavLink>
-        <NavLink to='/register' className={({isActive})=>isActive?'md:hidden w-2/5 mx-auto md:mx-2 px-3 py-1 block bg-slate-700 font-medium text-white text-center rounded-lg': 'md:hidden text-center w-2/5 mx-auto md:mx-2 px-3 py-1 block'}>Register</NavLink>
+        <NavLink to='/home' className={({isActive})=>isActive?'md:text-base w-2/5 mx-auto md:mx-2 px-3 py-1 block bg-slate-700 font-medium text-white text-center rounded-lg': 'md:text-base text-center w-2/5 mx-auto md:mx-2 px-3 py-1 block '}>Home</NavLink>
+        <NavLink to='/courses' className={({isActive})=>isActive?'md:text-base w-2/5 mx-auto md:mx-2 px-3 py-1 block bg-slate-700 font-medium text-white text-center rounded-lg': 'md:text-base text-center w-2/5 mx-auto md:mx-2 px-3 py-1 block'}>Courses</NavLink>
+        <NavLink to='/faq' className={({isActive})=>isActive?'md:text-base w-2/5 mx-auto md:mx-2 px-3 py-1 block bg-slate-700 font-medium text-white text-center rounded-lg': 'md:text-base text-center w-2/5 mx-auto md:mx-2 px-3 py-1 block'}>FAQ</NavLink>
+        <NavLink to='/blog' className={({isActive})=>isActive?'md:text-base w-2/5 mx-auto md:mx-2 px-3 py-1 block bg-slate-700 font-medium text-white text-center rounded-lg': 'md:text-base text-center w-2/5 mx-auto md:mx-2 px-3 py-1 block'}>Blog</NavLink>
+        
+        {
+            (user?.email || user?.displayName || user?.uid)?<></>:<>
+            <NavLink to='/login' className={({isActive})=>isActive?'md:hidden w-2/5 mx-auto md:mx-2 px-3 py-1 block bg-slate-700 font-medium text-white text-center rounded-lg': 'md:hidden text-center w-2/5 mx-auto md:mx-2 px-3 py-1 block'}>Login</NavLink>
+            <NavLink to='/register' className={({isActive})=>isActive?'md:hidden w-2/5 mx-auto md:mx-2 px-3 py-1 block bg-slate-700 font-medium text-white text-center rounded-lg': 'md:hidden text-center w-2/5 mx-auto md:mx-2 px-3 py-1 block'}>Register</NavLink>
+            </>
+        }
             
         </Navbar.Collapse>
         </Navbar>
